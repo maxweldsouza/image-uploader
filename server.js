@@ -11,8 +11,9 @@ app.get('/', (req, res) => {
 
 app.post('/upload', async (req, res) => {
     try {
-        if (!req.files) return res.status(400).send('No files were uploaded.');
-        console.log(req.files.image);
+        if (!req.files) {
+            return res.status(400).send('No files were uploaded.');
+        }
 
         await images.saveAndUpload({
             image: req.files.image,
@@ -21,8 +22,8 @@ app.post('/upload', async (req, res) => {
 
         return res.send('File uploaded!');
     } catch (e) {
-        console.log(e);
         console.trace(e);
+        return res.status(500).send('Something went wrong');
     }
 });
 
