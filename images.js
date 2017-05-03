@@ -38,8 +38,7 @@ function upload(name) {
                     {width: 365, height: 450, crop: 'fill', gravity: 'auto'},
                     {width: 365, height: 212, crop: 'fill', gravity: 'auto'},
                     {width: 380, height: 380, crop: 'fill', gravity: 'auto'},
-                ],
-                eager_async: true,
+                ]
             }
         );
     });
@@ -47,6 +46,6 @@ function upload(name) {
 
 export async function saveAndUpload({image, name}) {
     await saveLocally({image, name});
-    // await upload(name);
+    await upload(name);
     return publicIdFromName(name);
 }

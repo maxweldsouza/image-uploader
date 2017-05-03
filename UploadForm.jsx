@@ -23,6 +23,7 @@ export default class UploadForm extends React.Component {
         this.onSubmit = this.onSubmit.bind(this);
         this.onImageSelect = this.onImageSelect.bind(this);
         this.state = {
+            uploading: false,
             error: ''
         }
     }
@@ -35,6 +36,9 @@ export default class UploadForm extends React.Component {
     }
     async onSubmit(e) {
         e.preventDefault();
+        this.setState({
+            uploading: true,
+        })
         const image = this.imageInput.files[0];
 
         const formData = new FormData();
@@ -44,6 +48,9 @@ export default class UploadForm extends React.Component {
             body: formData,
         });
         const data = await r.json();
+        this.setState({
+            uploading: false
+        });
         this.props.onUpload(data.publicId);
     }
     render() {
@@ -69,6 +76,7 @@ export default class UploadForm extends React.Component {
                             }}
                             />
                     </div>
+                    {this.state.uploading ? 'Uploading...' : null}
                     <div className="form-group">
                         <input type="submit" value="Upload" className="btn btn-primary" disabled={Boolean(this.state.error)}/>
                     </div>
