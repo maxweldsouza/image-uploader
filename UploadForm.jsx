@@ -21,7 +21,7 @@ export default class UploadForm extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="well">
                 <h1>Image uploader</h1>
                 <form
                     id="uploadForm"
@@ -30,9 +30,12 @@ export default class UploadForm extends React.Component {
                     encType="multipart/form-data"
                     onSubmit={this.onSubmit}
                 >
-
-                    <input type="file" name="image" ref={(input) => { this.imageInput = input; }} />
-                    <input type="submit" value="Upload" />
+                    <div className='form-group'>
+                        <input type="file" name="image" ref={(input) => { this.imageInput = input; }} />
+                    </div>
+                    <div className='form-group'>
+                        <input type="submit" value="Upload" className="btn btn-primary" />
+                    </div>
                 </form>
             </div>
         );
