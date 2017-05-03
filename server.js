@@ -1,12 +1,15 @@
 import express from 'express';
+import path from 'path';
 import fileUpload from 'express-fileupload';
 import * as images from './images';
 
 const app = express();
 app.use(fileUpload());
 
+app.use('/static', express.static(path.join(__dirname, 'dist', 'static')));
+
 app.get('/', (req, res) => {
-    res.sendfile('index.html');
+    res.sendfile('dist/index.html');
 });
 
 app.post('/upload', async (req, res) => {

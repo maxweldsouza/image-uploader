@@ -2,7 +2,8 @@
     "extends": "airbnb",
     "plugins": [
         "prettier",
-        "jest"
+        "jest",
+        "react"
     ],
     "parser": "babel-eslint",
     "env": {
