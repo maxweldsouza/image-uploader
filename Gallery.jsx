@@ -4,7 +4,6 @@ import { Image } from 'cloudinary-react';
 export default class Gallery extends React.Component {
     render() {
         return (<div>
-            <h2>Uploaded Images</h2>
             <h3>Vertical 365 x 450</h3>
             <Image cloudName="comparnion" publicId="Aldrin_Apollo_11" width="365" height="450" crop="fill" gravity="auto" />
             <h3>Horizontal 755 x 450</h3>
