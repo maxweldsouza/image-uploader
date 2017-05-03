@@ -9,13 +9,13 @@ app.use(fileUpload());
 app.use('/static', express.static(path.join(__dirname, 'dist', 'static')));
 
 app.get('/', (req, res) => {
-    res.sendfile('dist/index.html');
+    res.sendFile('dist/index.html');
 });
 
 app.post('/upload', async (req, res) => {
     try {
         if (!req.files) {
-            return res.status(400).send('No files were uploaded.');
+            return res.status(400).send('No image uploaded.');
         }
 
         const publicId = await images.saveAndUpload({
@@ -31,5 +31,5 @@ app.post('/upload', async (req, res) => {
 });
 
 app.listen(3000, () => {
-    console.log('listening on port 3000!');
+    console.log('Listening on port 3000!');
 });
