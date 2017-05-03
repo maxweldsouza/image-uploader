@@ -9,7 +9,7 @@ app.use(fileUpload());
 app.use('/static', express.static(path.join(__dirname, 'dist', 'static')));
 
 app.get('/', (req, res) => {
-    res.sendFile('dist/index.html');
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 app.post('/upload', async (req, res) => {

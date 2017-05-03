@@ -9,7 +9,7 @@ function imageLocalPath(name) {
 }
 
 function publicIdFromName(name) {
-    return (publicId = path.basename(name, path.extname(name)));
+    return path.basename(name, path.extname(name));
 }
 
 function saveLocally({image, name}) {
