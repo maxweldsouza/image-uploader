@@ -1,25 +1,26 @@
 import express from 'express';
 import fileUpload from 'express-fileupload';
-import path from 'path';
 import * as images from './images';
 
-let app = express();
+const app = express();
 app.use(fileUpload());
 
-app.get('/', function(req,res) {
+app.get('/', (req, res) => {
     res.sendfile('index.html');
 });
 
 app.post('/upload', async (req, res) => {
-    if (!req.files)
-        return res.status(400).send('No files were uploaded.');
+    if (!req.files) return res.status(400).send('No files were uploaded.');
     console.log(req.files.image);
 
-    await images.saveAndUpload({ image: req.files.image, name: req.files.image.name });
+    await images.saveAndUpload({
+        image: req.files.image,
+        name: req.files.image.name,
+    });
 
-    res.send('File uploaded!');
+    return res.send('File uploaded!');
 });
 
-app.listen(3000, function () {
+app.listen(3000, () => {
     console.log('listening on port 3000!');
 });
