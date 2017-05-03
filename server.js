@@ -15,7 +15,7 @@ app.post('/upload', async (req, res) => {
         return res.status(400).send('No files were uploaded.');
     console.log(req.files.image);
 
-    await images.save_locally(req.files.image);
+    await images.saveAndUpload({ image: req.files.image, name: req.files.image.name });
 
     res.send('File uploaded!');
 });
