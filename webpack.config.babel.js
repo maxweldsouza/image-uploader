@@ -5,10 +5,18 @@ import CleanWebpackPlugin from 'clean-webpack-plugin';
 export default {
     entry: './index.js',
     devtool: 'source-map',
+    resolve: {
+        extensions: ['.js', '.jsx'],
+    },
     module: {
         rules: [
             {
                 test: /\.js$/,
+                use: ['babel-loader'],
+                exclude: /node_modules/,
+            },
+            {
+                test: /\.jsx$/,
                 use: ['babel-loader'],
                 exclude: /node_modules/,
             },
