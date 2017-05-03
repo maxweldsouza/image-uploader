@@ -48,7 +48,7 @@ export default class UploadForm extends React.Component {
     }
     render() {
         return (
-            <div className="well">
+            <div>
                 <h1>Image uploader</h1>
                 {this.state.error ? <div className="alert alert-danger" role="alert">
                     {this.state.error}
