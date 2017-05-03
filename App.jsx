@@ -19,17 +19,14 @@ export default class App extends React.Component {
     }
     render() {
         return (
-            <div
-                className="container"
-                style={{ marginTop: '50px', marginBottom: '50px' }}
-            >
+            <div className="container" style={{ marginTop: '50px', marginBottom: '50px' }}>
                 <div className="well">
                     <UploadForm onUpload={this.onUpload} />
                     {this.state.uploaded
                         ? <div>
                             <div className="alert alert-success" role="alert">
-                                Image uploaded successfully
-                            </div>
+                                  Image uploaded successfully
+                              </div>
                             <Gallery publicId={this.state.publicId} />
                         </div>
                         : null}
