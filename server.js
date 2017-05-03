@@ -18,12 +18,12 @@ app.post('/upload', async (req, res) => {
             return res.status(400).send('No files were uploaded.');
         }
 
-        await images.saveAndUpload({
+        const publicId = await images.saveAndUpload({
             image: req.files.image,
             name: req.files.image.name,
         });
 
-        return res.json({ status: 'Uploaded' });
+        return res.json({ publicId });
     } catch (e) {
         console.trace(e);
         return res.status(500).send('Something went wrong');

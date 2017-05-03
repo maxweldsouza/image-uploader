@@ -7,20 +7,22 @@ export default class App extends React.Component {
         super();
         this.state = {
             uploaded: false,
+            publicId: '',
         };
         this.onUpload = this.onUpload.bind(this);
     }
-    onUpload() {
+    onUpload(publicId) {
         this.setState({
             uploaded: true,
+            publicId,
         });
     }
     render() {
         return (
             <div>
-                <h1>Image uploader</h1>
-                {this.state.uploaded ? <Gallery /> : <UploadForm onUpload={this.onUpload} />}
-                <button onClick={this.onUpload}>Gallery</button>
+                {this.state.uploaded
+                    ? <Gallery publicId={this.state.publicId} />
+                    : <UploadForm onUpload={this.onUpload} />}
             </div>
         );
     }

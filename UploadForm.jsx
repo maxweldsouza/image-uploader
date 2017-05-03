@@ -17,23 +17,24 @@ export default class UploadForm extends React.Component {
             body: formData,
         });
         const data = await r.json();
-        this.props.onUpload(data);
+        this.props.onUpload(data.publicId);
     }
     render() {
         return (
-            <form
-                id="uploadForm"
-                action="http://localhost:3000/upload"
-                method="post"
-                encType="multipart/form-data"
-                onSubmit={this.onSubmit}
-            >
+            <div>
+                <h1>Image uploader</h1>
+                <form
+                    id="uploadForm"
+                    action="http://localhost:3000/upload"
+                    method="post"
+                    encType="multipart/form-data"
+                    onSubmit={this.onSubmit}
+                >
 
-                <input type="file" name="image" ref={(input) => { this.imageInput = input; }} />
-                <input type="submit" value="Upload" />
-            </form>
+                    <input type="file" name="image" ref={(input) => { this.imageInput = input; }} />
+                    <input type="submit" value="Upload" />
+                </form>
+            </div>
         );
     }
 }
-
-UploadForm.propTypes = {};

@@ -45,4 +45,6 @@ function upload(name) {
 export async function saveAndUpload({ image, name }) {
     await saveLocally({ image, name });
     // await upload(name);
+    const publicId = path.basename(name, path.extname(name));
+    return publicId;
 }
