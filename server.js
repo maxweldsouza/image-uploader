@@ -10,15 +10,20 @@ app.get('/', (req, res) => {
 });
 
 app.post('/upload', async (req, res) => {
-    if (!req.files) return res.status(400).send('No files were uploaded.');
-    console.log(req.files.image);
+    try {
+        if (!req.files) return res.status(400).send('No files were uploaded.');
+        console.log(req.files.image);
 
-    await images.saveAndUpload({
-        image: req.files.image,
-        name: req.files.image.name,
-    });
+        await images.saveAndUpload({
+            image: req.files.image,
+            name: req.files.image.name,
+        });
 
-    return res.send('File uploaded!');
+        return res.send('File uploaded!');
+    } catch (e) {
+        console.log(e);
+        console.trace(e);
+    }
 });
 
 app.listen(3000, () => {

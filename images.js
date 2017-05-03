@@ -20,12 +20,16 @@ function saveLocally({ image, name }) {
     });
 }
 
-function upload({ name }) {
-    return new Promise((resolve, reject) => {
+function upload(name) {
+    const public_id = path.basename(name, path.extname(name));
+    return new Promise((resolve) => {
         cloudinary.uploader.upload(
             imageLocalPath(name),
+            (result) => {
+                resolve(result);
+            },
             {
-                public_id: name,
+                public_id,
                 eager: [
                     { width: 755, height: 450, crop: 'fill', gravity: 'auto' },
                     { width: 365, height: 450, crop: 'fill', gravity: 'auto' },
@@ -35,18 +39,12 @@ function upload({ name }) {
                 eager_async: true,
                 // tags: ['special', 'for_homepage']
             },
-            (e, result) => {
-                if (e) {
-                    reject(e);
-                } else {
-                    resolve(result);
-                }
-            }
         );
     });
 }
 
 export async function saveAndUpload({ image, name }) {
+    console.log('name', name);
     await saveLocally({ image, name });
-    // await upload(image, name, image_location);
+    await upload(name);
 }
