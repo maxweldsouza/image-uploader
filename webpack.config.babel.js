@@ -3,7 +3,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 
 export default {
-    entry: './index.js',
+    entry: ['babel-polyfill', './index.js'],
     devtool: 'source-map',
     resolve: {
         extensions: ['.js', '.jsx'],

@@ -44,5 +44,5 @@ function upload(name) {
 
 export async function saveAndUpload({ image, name }) {
     await saveLocally({ image, name });
-    await upload(name);
+    // await upload(name);
 }

@@ -8,9 +8,9 @@ export default class App extends React.Component {
         this.state = {
             uploaded: false,
         };
-        this.onGallery = this.onGallery.bind(this);
+        this.onUpload = this.onUpload.bind(this);
     }
-    onGallery() {
+    onUpload() {
         this.setState({
             uploaded: true,
         });
@@ -19,8 +19,8 @@ export default class App extends React.Component {
         return (
             <div>
                 <h1>Image uploader</h1>
-                {this.state.uploaded ? <Gallery /> : <UploadForm />}
-                <button onClick={this.onGallery}>Gallery</button>
+                {this.state.uploaded ? <Gallery /> : <UploadForm onUpload={this.onUpload} />}
+                <button onClick={this.onUpload}>Gallery</button>
             </div>
         );
     }

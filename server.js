@@ -23,7 +23,7 @@ app.post('/upload', async (req, res) => {
             name: req.files.image.name,
         });
 
-        return res.send('File uploaded!');
+        return res.json({ status: 'Uploaded' });
     } catch (e) {
         console.trace(e);
         return res.status(500).send('Something went wrong');
