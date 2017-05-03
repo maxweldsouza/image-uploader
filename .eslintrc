@@ -1,5 +1,5 @@
 {
-    "extends": "airbnb",
+    "extends": ["airbnb", "plugin:react/recommended"],
     "plugins": [
         "prettier",
         "jest",
@@ -9,6 +9,7 @@
     "env": {
         "node": true,
         "jest": true,
+        "browser": true,
         "es6": true
     },
     "parserOptions": {
@@ -16,7 +17,9 @@
         "sourceType": "module",
     },
     "rules": {
-        "indent":[
+        "react/jsx-indent": [2, 4],
+        "react/jsx-indent-props": [2, 4],
+        "indent": [
             "error",
             4,
             {

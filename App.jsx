@@ -6,20 +6,22 @@ export default class App extends React.Component {
     constructor() {
         super();
         this.state = {
-            uploaded: false
-        }
+            uploaded: false,
+        };
         this.onGallery = this.onGallery.bind(this);
     }
-    onGallery () {
+    onGallery() {
         this.setState({
-            uploaded: true
+            uploaded: true,
         });
     }
     render() {
-        return <div>
-            <h1>Image uploader</h1>
-            {this.state.uploaded ? <Gallery /> : <UploadForm />}
-            <button onClick={this.onGallery}>Gallery</button>
-        </div>;
+        return (
+            <div>
+                <h1>Image uploader</h1>
+                {this.state.uploaded ? <Gallery /> : <UploadForm />}
+                <button onClick={this.onGallery}>Gallery</button>
+            </div>
+        );
     }
 }
