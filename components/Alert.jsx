@@ -15,9 +15,5 @@ export default function Alert({ showing, type, message }) {
 Alert.propTypes = {
     showing: PropTypes.bool.isRequired,
     type: PropTypes.oneOf(['success', 'info', 'warning', 'danger']).isRequired,
-    message: PropTypes.string,
-};
-
-Alert.defaultProps = {
-    message: '',
+    message: PropTypes.string.isRequired,
 };
