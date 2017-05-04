@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Alert from './Alert';
 
 function getImageDimensions(image) {
@@ -91,3 +92,7 @@ export default class UploadForm extends React.Component {
         );
     }
 }
+
+UploadForm.propTypes = {
+    onUpload: PropTypes.func.isRequired,
+};
