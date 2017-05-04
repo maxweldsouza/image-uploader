@@ -1,6 +1,7 @@
 import React from 'react';
 import UploadForm from './UploadForm';
 import Gallery from './Gallery';
+import Alert from './Alert';
 
 export default class App extends React.Component {
     constructor() {
@@ -24,9 +25,7 @@ export default class App extends React.Component {
                     <UploadForm onUpload={this.onUpload} />
                     {this.state.uploaded
                         ? <div>
-                            <div className="alert alert-success" role="alert">
-                                  Image uploaded successfully
-                              </div>
+                            <Alert showing={true} type="success" />
                             <Gallery publicId={this.state.publicId} />
                         </div>
                         : null}
