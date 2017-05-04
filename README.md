@@ -2,7 +2,7 @@
 
 To run this
 
-Create a config.json. (From sample_config.json)
+Create a config.json. (From sample_config.json)  
 Then:
 
 ```
