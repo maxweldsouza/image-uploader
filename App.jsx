@@ -22,6 +22,7 @@ export default class App extends React.Component {
         return (
             <div className="container" style={{ marginTop: '50px', marginBottom: '50px' }}>
                 <div className="well">
+                    <h1>Image uploader</h1>
                     <UploadForm onUpload={this.onUpload} />
                     {this.state.uploaded
                         ? <div>

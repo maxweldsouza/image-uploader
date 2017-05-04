@@ -2,13 +2,11 @@
     "extends": ["airbnb", "plugin:react/recommended"],
     "plugins": [
         "prettier",
-        "jest",
         "react"
     ],
     "parser": "babel-eslint",
     "env": {
         "node": true,
-        "jest": true,
         "browser": true,
         "es6": true
     },
