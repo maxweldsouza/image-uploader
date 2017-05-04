@@ -20,7 +20,7 @@ app.post('/upload', async (req, res) => {
 
         const publicId = await images.saveAndUpload({
             image: req.files.image,
-            name: req.files.image.name,
+            fileName: req.files.image.name,
         });
 
         return res.json({ publicId });

@@ -4,17 +4,17 @@ import config from './config.json';
 
 cloudinary.config(config.cloudinary);
 
-function imageLocalPath(name) {
-    return path.join(__dirname, 'uploaded_images', name);
+function imageLocalPath(fileName) {
+    return path.join(__dirname, 'uploaded_images', fileName);
 }
 
-function publicIdFromName(name) {
-    return path.basename(name, path.extname(name));
+function publicIdFromFileName(fileName) {
+    return path.basename(fileName, path.extname(fileName));
 }
 
-function saveLocally({ image, name }) {
+function saveLocally({ image, fileName }) {
     return new Promise((resolve, reject) => {
-        image.mv(imageLocalPath(name), (e) => {
+        image.mv(imageLocalPath(fileName), (e) => {
             if (e) {
                 reject(e);
             } else {
@@ -24,15 +24,15 @@ function saveLocally({ image, name }) {
     });
 }
 
-function upload(name) {
+function upload(fileName) {
     return new Promise((resolve) => {
         cloudinary.uploader.upload(
-            imageLocalPath(name),
+            imageLocalPath(fileName),
             (result) => {
                 resolve(result);
             },
             {
-                public_id: publicIdFromName(name),
+                public_id: publicIdFromFileName(fileName),
                 eager: [
                     { width: 755, height: 450, crop: 'fill', gravity: 'auto' },
                     { width: 365, height: 450, crop: 'fill', gravity: 'auto' },
@@ -44,8 +44,8 @@ function upload(name) {
     });
 }
 
-export async function saveAndUpload({ image, name }) {
-    await saveLocally({ image, name });
-    await upload(name);
-    return publicIdFromName(name);
+export async function saveAndUpload({ image, fileName }) {
+    await saveLocally({ image, fileName });
+    await upload(fileName);
+    return publicIdFromFileName(fileName);
 }
