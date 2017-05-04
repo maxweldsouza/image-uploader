@@ -1,4 +1,5 @@
 import React from 'react';
+import Alert from './Alert';
 
 function getImageDimensions(image) {
     const img = new Image();
@@ -39,8 +40,8 @@ export default class UploadForm extends React.Component {
         this.setState({
             uploading: true,
         });
-        const image = this.imageInput.files[0];
 
+        const image = this.imageInput.files[0];
         const formData = new FormData();
         formData.append('image', image);
         const r = await fetch('http://localhost:3000/upload', {
@@ -48,20 +49,18 @@ export default class UploadForm extends React.Component {
             body: formData,
         });
         const data = await r.json();
+
         this.setState({
             uploading: false,
         });
+
         this.props.onUpload(data.publicId);
     }
     render() {
         return (
             <div>
                 <h1>Image uploader</h1>
-                {this.state.error
-                    ? <div className="alert alert-danger" role="alert">
-                        {this.state.error}
-                    </div>
-                    : null}
+                <Alert type="danger" showing={Boolean(this.state.error)} message={this.state.error} />
                 <form
                     action="/upload"
                     method="post"

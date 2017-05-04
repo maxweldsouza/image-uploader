@@ -25,7 +25,7 @@ export default class App extends React.Component {
                     <UploadForm onUpload={this.onUpload} />
                     {this.state.uploaded
                         ? <div>
-                            <Alert showing={true} type="success" />
+                            <Alert type="success" message="Image uploaded successfully" showing />
                             <Gallery publicId={this.state.publicId} />
                         </div>
                         : null}
